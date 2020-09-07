@@ -5,7 +5,7 @@ import './App.css';
 
 import { initialProducts } from './reducers/productReducers'
 import { removeProduct } from './reducers/productReducers'
-// import { updateProduct } from './reducers/productReducers'
+import { updateProduct } from './reducers/productReducers'
 
 function App(props) {
   const products = props.products;
@@ -21,17 +21,17 @@ function App(props) {
   };
 
   
-  // const updateProduct = async (event) => {
-  //   const newProduct = {
-  //     size: 23,
-  //     color: 'Black',
-  //     quantity: 90,
-  //     images: ['image10', 'image45'],
-  //     price: 40000
-  //   }
-  //   const updateProduct = { ...products };
-  //   props.likeBlog(newProduct)
-  // };
+  const updateProduct = async (event) => {
+    const newProduct = {
+      size: 23,
+      color: 'Black',
+      quantity: 90,
+      images: ['image10', 'image45'],
+      price: 40000
+    }
+    const updateProduct = { ...products };
+    props.updateProduct(newProduct)
+  };
 
 
   const productList = products.map((p, i) => (
@@ -61,6 +61,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   initialProducts,
   removeProduct,
+  updateProduct,
 }
 
 export default connect(

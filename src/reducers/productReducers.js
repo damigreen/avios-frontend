@@ -12,6 +12,13 @@ const productReducer = (state=[], action) => {
       return state.filter(b => b.id !== id)
     }    
 
+    case 'UPDATE_PRODUCT': {
+      const updatedProduct = action.data
+      const id = updatedProduct.id
+      return state.map(b => b.id !== id ? b : updatedProduct)
+    }
+  
+
     default:
       return state
 
@@ -38,6 +45,16 @@ export const removeProduct = id => {
           data: id
         })
       })
+  }
+}
+
+export const updateProduct = blog => {
+  return dispatch => {
+    productService.update(blog.id, blog)
+      .then(updatedProduct => dispatch({
+        type: 'UPDATE_PRODUCT',
+        data: updatedProduct
+      }))
   }
 }
 
