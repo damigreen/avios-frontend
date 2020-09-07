@@ -34,7 +34,7 @@ export const removeProduct = id => {
     productService.del(id)
       .then(() => {
         dispatch({
-          type: 'REMOVE_BLOG',
+          type: 'REMOVE_PRODUCT',
           data: id
         })
       })
